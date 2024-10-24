@@ -133,7 +133,7 @@ namespace Proyecto_1
             }
         }
 
-        private void BtnOperacion_Click(object sender, EventArgs e)
+        private void BtnOperacion_Avanzadas_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             if (btn != null)
