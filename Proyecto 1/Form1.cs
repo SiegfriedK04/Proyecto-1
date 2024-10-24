@@ -114,7 +114,7 @@ namespace Proyecto_1
                         throw new InvalidOperationException("Operador no reconocido. Intente nuevamente.");
                 }
 
-                Pantalla.Text = resultado.ToString();
+                Pantalla.Text = resultado.ToString("N2");
                 GuardarOperacion(operacion, valor1, valor2, resultado);
                 valor1 = resultado;
             }
@@ -161,7 +161,7 @@ namespace Proyecto_1
                             resultado = Math.Sin(valor1 * Math.PI / 180);
                             break;
                         default:
-                            MessageBox.Show("Operación no soportada.");
+                            MessageBox.Show("Operacion no reconocida.");
                             return;
                     }
 
