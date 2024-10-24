@@ -133,6 +133,48 @@ namespace Proyecto_1
             }
         }
 
+        private void BtnOperacion_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                try
+                {
+                    double valor1 = Convert.ToDouble(Pantalla.Text);
+                    double resultado = 0;
+
+                    switch (btn.Text)
+                    {
+                        case "√":
+                            resultado = Math.Sqrt(valor1);
+                            break;
+                        case "x²":
+                            resultado = Math.Pow(valor1, 2);
+                            break;
+                        case "%":
+                            resultado = valor1 / 100;
+                            break;
+                        case "Cos":
+                            resultado = Math.Cos(valor1 * Math.PI / 180);
+                            break;
+                        case "Sen":
+                            resultado = Math.Sin(valor1 * Math.PI / 180);
+                            break;
+                        default:
+                            MessageBox.Show("Operación no soportada.");
+                            return;
+                    }
+
+                    Pantalla.Text = resultado.ToString("N2");
+                    GuardarOperacion(btn.Text, valor1, 0, resultado);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+        }
+
         private void BtnDel_Click(object sender, EventArgs e)
         {
             if (Pantalla.Text.Length > 0)
@@ -267,48 +309,6 @@ namespace Proyecto_1
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al obtener el historial: {ex.Message}");
-            }
-        }
-
-        private void BtnOperacion_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            if (btn != null)
-            {
-                try
-                {
-                    double valor1 = Convert.ToDouble(Pantalla.Text);
-                    double resultado = 0;
-
-                    switch (btn.Text)
-                    {
-                        case "√":
-                            resultado = Math.Sqrt(valor1);
-                            break;
-                        case "x²":
-                            resultado = Math.Pow(valor1, 2);
-                            break;
-                        case "%":
-                            resultado = valor1 / 100;
-                            break;
-                        case "Cos":
-                            resultado = Math.Cos(valor1 * Math.PI / 180); 
-                            break;
-                        case "Sen":
-                            resultado = Math.Sin(valor1 * Math.PI / 180);
-                            break;
-                        default:
-                            MessageBox.Show("Operación no soportada.");
-                            return;
-                    }
-
-                    Pantalla.Text = resultado.ToString("N2");
-                    GuardarOperacion(btn.Text, valor1, 0, resultado);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
             }
         }
 
