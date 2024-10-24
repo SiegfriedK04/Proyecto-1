@@ -108,10 +108,10 @@ namespace Proyecto_1
                         if (valor2 != 0)
                             resultado = valor1 / valor2;
                         else
-                            throw new DivideByZeroException("No se puede dividir entre cero.");
+                            throw new DivideByZeroException("No se puede dividir los numeros entre cero.");
                         break;
                     default:
-                        throw new InvalidOperationException("Operación no válida.");
+                        throw new InvalidOperationException("Operador no reconocido. Intente nuevamente.");
                 }
 
                 Pantalla.Text = resultado.ToString();
@@ -120,7 +120,7 @@ namespace Proyecto_1
             }
             catch (FormatException)
             {
-                MessageBox.Show("Error: Ingrese un número válido.");
+                MessageBox.Show("Error: Ingrese un numero valido");
                 Pantalla.Clear();
             }
             catch (DivideByZeroException ex)
@@ -129,7 +129,7 @@ namespace Proyecto_1
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}");
+                MessageBox.Show($"Error detectado: {ex.Message}");
             }
         }
 
@@ -147,35 +147,6 @@ namespace Proyecto_1
             Pantalla.Clear();
             valor1 = valor2 = 0;
             operacion = "";
-        }
-        private void BtnCos_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                double valor = Convert.ToDouble(Pantalla.Text);
-                double resultado = Math.Cos(valor * Math.PI / 180); 
-                Pantalla.Text = resultado.ToString("N2");
-                GuardarOperacion("Cos", valor, 0, resultado);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}");
-            }
-        }
-
-        private void BtnSen_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                double valor = Convert.ToDouble(Pantalla.Text);
-                double resultado = Math.Sin(valor * Math.PI / 180); 
-                Pantalla.Text = resultado.ToString("N2");
-                GuardarOperacion("Sen", valor, 0, resultado);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}");
-            }
         }
 
         private void BtnCE_Click(object sender, EventArgs e)
@@ -320,12 +291,18 @@ namespace Proyecto_1
                         case "%":
                             resultado = valor1 / 100;
                             break;
+                        case "Cos":
+                            resultado = Math.Cos(valor1 * Math.PI / 180); 
+                            break;
+                        case "Sen":
+                            resultado = Math.Sin(valor1 * Math.PI / 180);
+                            break;
                         default:
                             MessageBox.Show("Operación no soportada.");
                             return;
                     }
 
-                    Pantalla.Text = resultado.ToString();
+                    Pantalla.Text = resultado.ToString("N2");
                     GuardarOperacion(btn.Text, valor1, 0, resultado);
                 }
                 catch (Exception ex)

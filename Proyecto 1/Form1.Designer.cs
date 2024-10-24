@@ -313,7 +313,7 @@
             this.BtnSen.TabIndex = 26;
             this.BtnSen.Text = "Sen";
             this.BtnSen.UseVisualStyleBackColor = true;
-            this.BtnSen.Click += new System.EventHandler(this.BtnSen_Click);
+            this.BtnSen.Click += new System.EventHandler(this.BtnOperacion_Click);
             // 
             // BtnCos
             // 
@@ -323,7 +323,7 @@
             this.BtnCos.TabIndex = 25;
             this.BtnCos.Text = "Cos";
             this.BtnCos.UseVisualStyleBackColor = true;
-            this.BtnCos.Click += new System.EventHandler(this.BtnCos_Click);
+            this.BtnCos.Click += new System.EventHandler(this.BtnOperacion_Click);
             // 
             // BtnBorrar
             // 
